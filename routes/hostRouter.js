@@ -10,15 +10,15 @@ const rootDir = require('../utils/pathUtil');
 const { title } = require('process');
 
 hostRouter.get("/add-home", (req, res, next) => {
-     res.render('addHome', {pageTitle: 'Add to home'});
+     res.render('addHome', {pageTitle: 'Add to home', currentPage: 'addHome'});
 });
 
 const registeredHome = [];
 
 hostRouter.post("/add-home", (req, res, next) => {
      console.log('Home registration successful for:', req.body, req.body.houseName);
-     registeredHome.push({houseName: req.body.houseName});
-     res.render('homeAdded', {pageTitle: 'Home added'});
+     registeredHome.push(req.body);
+     res.render('homeAdded', {pageTitle: 'Home added', currentPage: 'homeAdded'});
 });
 
 exports.hostRouter = hostRouter;
