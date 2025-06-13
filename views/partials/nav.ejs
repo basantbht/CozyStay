@@ -1,7 +1,15 @@
 <header class="bg-gray-500 p-5 text-white">
 
-    <a href="/" class="<%= currentPage === 'Home' ? 'bg-orange-200' :  'hover:bg-orange-200' %> py-2 px-4">Home</a>
+    <a href="/" class="<%= currentPage === 'index' ? 'bg-red-400' :  'hover:bg-red-400' %> py-2 px-4">airbnb</a>
 
-    <a href="/host/add-home" class="<%= currentPage === 'addHome' ? 'bg-orange-200' :  'hover:bg-orange-200' %> ml-6 py-2 px-4"> Add Home </a>
+    <a href="/homes" class="<%= currentPage === 'Home' ? 'bg-red-400' :  'hover:bg-red-400' %> py-2 px-4">Homes-list</a>
 
-</header>
+    <a href="/favourites" class="<%= currentPage === 'favourites' ? 'bg-red-400' :  'hover:bg-red-400' %> ml-6 py-2 px-4"> Favourites </a>
+
+    <a href="/bookings" class="<%= currentPage === 'bookings' ? 'bg-red-400' :  'hover:bg-red-400' %> ml-6 py-2 px-4"> Bookings </a>
+
+    <a href="/host/host-home-list" class="<%= currentPage === 'host-homes' ? 'bg-red-400' :  'hover:bg-red-400' %> ml-6 py-2 px-4"> Host homes </a>
+    
+    <a href="/host/add-home" class="<%= currentPage === 'addHome' ? 'bg-red-400' :  'hover:bg-red-400' %> ml-6 py-2 px-4"> Add Home </a>
+
+</header> 
