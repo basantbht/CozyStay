@@ -2,23 +2,23 @@ const Favourite = require("../models/favourite");
 const Home = require("../models/home");
 
 exports.getIndex = (req, res, next) => {
-    Home.fetchAll((registeredHomes) =>
+    Home.fetchAll().then(([registeredHomes]) => {
         res.render('store/index', {
             registeredHomes: registeredHomes,
             pageTitle: 'airbnb home',
             currentPage: 'index'
         })
-    );
+    });
 };
 
 exports.getHomes = (req, res, next) => {
-    Home.fetchAll((registeredHomes) =>
-        res.render('store/home-list', {
+Home.fetchAll().then(([registeredHomes]) => {
+            res.render('store/home-list', {
             registeredHomes: registeredHomes,
             pageTitle: 'Homes List',
             currentPage: 'Home'
         })
-    );
+});
 };
 
 exports.getBookings = (req, res, next) => {
@@ -30,7 +30,7 @@ exports.getBookings = (req, res, next) => {
 
 exports.getFavouriteList = (req, res, next) => {
     Favourite.getFavourites((favourites) => {
-        Home.fetchAll((registeredHomes) => {
+        Home.fetchAll().then(([registeredHomes]) => {
             const favouriteHomes = registeredHomes.filter(home => favourites.includes(home.id));
             res.render('store/favourite-list', {
                 favouriteHomes: favouriteHomes,
@@ -56,7 +56,8 @@ exports.postAddToFavourite = (req, res, next) => {
 
 exports.getHomesDetails = (req, res, next) => {
     const homeId = req.params.homeId;
-    Home.findById(homeId, home => {
+    Home.findById(homeId).then(([homes]) => {
+        const home = homes[0];
         if (!home) {
             console.log("Home not found");
             res.redirect("/homes");
@@ -70,10 +71,10 @@ exports.getHomesDetails = (req, res, next) => {
     });
 };
 
-exports.postRemoveFromFavourites = (req,res,next) => {
+exports.postRemoveFromFavourites = (req, res, next) => {
     const homeId = req.params.homeId;
     Favourite.deleteById(homeId, error => {
-        if(error){
+        if (error) {
             console.log("Error removing favourites", error);
         }
         res.redirect('/favourites');

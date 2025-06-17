@@ -8,12 +8,12 @@ const express = require('express');
 const storeRouter = require("./routes/storeRouter");
 const hostRouter = require("./routes/hostRouter");
 const rootDir = require('./utils/pathUtil');
-const errorController = require('./controllers/errors')
+const errorController = require('./controllers/errors');
 
 const app = express();
 
 app.set('view engine', 'ejs');
-app.set('views','views');
+app.set('views', 'views');
 
 app.use(express.urlencoded());
 app.use(storeRouter);
