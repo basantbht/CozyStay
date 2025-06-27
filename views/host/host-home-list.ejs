@@ -20,8 +20,8 @@
                 <p class="text-gray-700 mt-2">💰 Price: Rs. <%= home.price %>
                 </p>
                 <p class="text-yellow-500 mt-1">⭐ Rating: <%= home.rating %>/5</p>
-                <a href="/host/edit-home/<%= home.id %>?editing=true" class="bg-blue-500 p-2 mt-3">Edit</a>
-               <form action="/host/delete-home/<%= home.id %>" method="POST">
+                <a href="/host/edit-home/<%= home._id %>?editing=true" class="bg-blue-500 p-2 mt-3">Edit</a>
+               <form action="/host/delete-home/<%= home._id %>" method="POST">
                 <button type="submit" class="bg-red-500 p-2 mt-3 cursor-pointer">Delete</button>
                </form> 
               </div>

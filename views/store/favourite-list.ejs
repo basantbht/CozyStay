@@ -21,7 +21,7 @@
                 </p>
                 <p class="text-yellow-500 mt-1">⭐ Rating: <%= home.rating %>/5</p>
               </div>
-              <form action="/favourites/delete/<%= home.id %>" method="POST">
+              <form action="/favourites/delete/<%= home._id %>" method="POST">
                 <button type="submit" class="bg-red-500 p-2 m-2 cursor-pointer">Remove from favourite</button>
               </form>
             </div>

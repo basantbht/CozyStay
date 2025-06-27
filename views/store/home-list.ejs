@@ -20,7 +20,7 @@
                 </p>
                 <p class="text-yellow-500 mt-1">⭐ Rating: <%= home.rating %>/5</p>
                 <div class="flex items-center">
-                  <a class="bg-blue-300 p-2 mt-2" href="/homes/<%= home.id %>">Details</a>
+                  <a class="bg-blue-300 p-2 mt-2" href="/homes/<%= home._id %>">Details</a>
                 <div class="mt-2 ml-2">
                  <%- include('../partials/favourite',{home: home}) %>
                  </div>
