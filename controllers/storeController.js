@@ -1,5 +1,7 @@
 const Home = require("../models/home");
 const User = require("../models/user");
+const path = require("path");
+const rootDir = require("../utils/pathUtil");
 
 exports.getIndex = (req, res, next) => {
     console.log("Session value: ", req.session);
@@ -91,3 +93,21 @@ exports.getHomesDetails = (req, res, next) => {
     });
 };
 
+exports.getHouseRules = [(req,res,next) => {
+    if(!req.session.isLoggedIn){
+        return res.redirect("/login");
+    }
+    next();
+},
+ 
+(req,res,next) => {
+    const homeId = req.params.homeId;
+    const rulesFileName = `home.pdf`;
+    const filePath = path.join(rootDir, 'rules', rulesFileName);
+
+    res.download(filePath,'Rules.pdf');
+}
+
+
+
+]
