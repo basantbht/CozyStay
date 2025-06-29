@@ -1,0 +1,61 @@
+<%- include('../partials/head') %>
+    </head>
+
+    <body>
+        <%- include('../partials/nav') %>
+
+            <h1 class="text-center mt-5 text-4xl">
+                Register here!
+            </h1>
+            <main>
+
+                <form action="/signup" method="POST" class="flex flex-col justify-center items-center">
+                    
+        <%- include('../partials/errors') %>
+
+                    
+                    <input class="border-2 p-2 ml-1 rounded-sm w-xl mt-5" type="text" name="firstName"
+                        placeholder="First Name" value="<%= oldInput.firstName ? oldInput.firstName : '' %>" required />
+
+                    <input class="border-2 p-2 ml-1 rounded-sm w-xl mt-5" type="text" name="lastName"
+                        placeholder="Last Name" value="<%= oldInput.lastName ? oldInput.lastName : '' %>" />
+
+                    <input type="email" name="email" placeholder="Email"
+                        value="<%= oldInput.email ? oldInput.email : '' %>"
+                        class="border-2 p-2 ml-1 rounded-sm w-xl mt-5" required />
+
+                    <input class="border-2 p-2 ml-1 rounded-sm w-xl mt-5" type="password" name="password"
+                        placeholder="Enter your password" required />
+
+                    <input class="border-2 p-2 ml-1 rounded-sm w-xl mt-5" type="password" name="confirmPassword"
+                        placeholder="Confirm your password" required />
+
+                    <div class=" mt-5 text-left">
+                        <p>UserType:</p>
+
+                        <div class="flex gap-4">
+                            <label><input type="radio" name="userType" value="guest" id="guest"
+                                    class="mr-2" "<% if(oldInput.userType === 'guest') { %> checked <% } %>" />
+                                <span>Guest</span></label>
+
+                            <label><input type="radio" name="userType" value="host" id="host"
+                                    class="mr-2" "<% if (oldInput.userType === 'host') { %> checked <% } %>" />
+                                <span>Host</span></label>
+                        </div>
+
+
+                    </div>
+
+                    <div class="flex">
+                        <input type="checkbox" name="terms" id="terms" class="mr-2" required /><label for="terms">I
+                            agree to the terms and conditions</label>
+                    </div>
+
+                    <input class="border-2 p-2 ml-1 rounded-sm w-xl mt-5 bg-red-500 cursor-pointer" type="submit"
+                        value="Register" />
+
+                </form>
+            </main>
+    </body>
+
+    </html>
